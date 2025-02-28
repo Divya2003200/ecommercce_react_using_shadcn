@@ -1,92 +1,4 @@
-// import axios from "axios";
-// import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-// const API_URL = "https://fakestoreapi.com/products";
-
-// // Fetch all products
-// export const useProducts = () => {
-//   return useQuery({
-//     queryKey: ["products"],
-//     queryFn: async () => {
-//       const { data } = await axios.get(API_URL);
-//       return data;
-//     },
-//   });
-// };
-
-// // Fetch products by category
-// export const useProductsByCategory = (category: string) => {
-//   return useQuery({
-//     queryKey: ["products", category],
-//     queryFn: async () => {
-//       const { data } = await axios.get(`${API_URL}/category/${category}`);
-//       return data;
-//     },
-//   });
-// };
-
-// // Fetch products with limit
-// export const useProductsByLimit = (limit: number) => {
-//   return useQuery({
-//     queryKey: ["products", limit],
-//     queryFn: async () => {
-//       const { data } = await axios.get(`${API_URL}?limit=${limit}`);
-//       return data;
-//     },
-//   });
-// };
-
-// // Fetch a single product by ID
-// export const useProduct = (id: number) => {
-//   return useQuery({
-//     queryKey: ["product", id],
-//     queryFn: async () => {
-//       const { data } = await axios.get(`${API_URL}/${id}`);
-//       return data;
-//     },
-//   });
-// };
-
-// // Create a new product
-// export const useCreateProduct = () => {
-//   const queryClient = useQueryClient();
-//   return useMutation({
-//     mutationFn: async (newProduct: any) => {
-//       const { data } = await axios.post(API_URL, newProduct);
-//       return data;
-//     },
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({ queryKey: ["products"] });
-//     },
-//   });
-// };
-
-// // Update an existing product
-// export const useUpdateProduct = () => {
-//   const queryClient = useQueryClient();
-//   return useMutation({
-//     mutationFn: async ({ id, updatedProduct }: { id: number; updatedProduct: any }) => {
-//       const { data } = await axios.put(`${API_URL}/${id}`, updatedProduct);
-//       return data;
-//     },
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({ queryKey: ["products"] });
-//     },
-//   });
-// };
-
-// // Delete a product
-// export const useDeleteProduct = () => {
-//   const queryClient = useQueryClient();
-//   return useMutation({
-//     mutationFn: async (id: number) => {
-//       await axios.delete(`${API_URL}/${id}`);
-//     },
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({ queryKey: ["products"] });
-//     },
-//   });
-// };
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useProductContext } from "@/context/ProductContext";
@@ -94,7 +6,7 @@ import { Product } from "@/reducers/productReducer";
 
 const API_URL = "https://fakestoreapi.com/products";
 
-// Fetch all products
+ 
 export const useProducts = () => {
   const { dispatch } = useProductContext();
 
@@ -108,7 +20,7 @@ export const useProducts = () => {
   });
 };
 
-// Fetch a single product
+ 
 export const useProduct = (id: number) => {
   return useQuery<Product>({
     queryKey: ["product", id],
@@ -118,8 +30,7 @@ export const useProduct = (id: number) => {
     },
   });
 };
-
-// Create a new product
+ 
 export const useCreateProduct = () => {
   const queryClient = useQueryClient();
   const { dispatch } = useProductContext();
@@ -136,7 +47,7 @@ export const useCreateProduct = () => {
   });
 };
 
-// Update an existing product
+ 
 export const useUpdateProduct = () => {
   const queryClient = useQueryClient();
   const { dispatch } = useProductContext();
@@ -153,7 +64,7 @@ export const useUpdateProduct = () => {
   });
 };
 
-// Delete a product
+ 
 export const useDeleteProduct = () => {
   const queryClient = useQueryClient();
   const { dispatch } = useProductContext();

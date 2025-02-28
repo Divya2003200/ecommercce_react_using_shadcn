@@ -108,7 +108,7 @@ export function Sidebar({ setCategoryFilter, setLimit, onSelect }: SidebarProps)
     <div className="w-64 h-screen bg-gray-900 text-white p-4 fixed">
       <h2 className="text-xl font-bold mb-4">Sidebar Menu</h2>
 
-      {/* Select by Category */}
+      
       <label className="block mb-2">Select Category:</label>
       <Select onValueChange={(value) => setSelectedCategory(value)} value={selectedCategory}>
         <SelectTrigger className="w-full mb-4">
@@ -122,8 +122,7 @@ export function Sidebar({ setCategoryFilter, setLimit, onSelect }: SidebarProps)
           ))}
         </SelectContent>
       </Select>
-
-      {/* Filter by Limit */}
+ 
       <label className="block mb-2">Set Limit:</label>
       <Input 
         type="number" 
@@ -135,19 +134,16 @@ export function Sidebar({ setCategoryFilter, setLimit, onSelect }: SidebarProps)
         }} 
         className="mb-4"
       />
-
-      {/* CRUD Operations */}
+ 
       <Button className="w-full mb-4" onClick={() => setIsCreateOpen(true)}>Create Product</Button>
 
-      {/* Edit Product */}
+       
       <Input type="number" placeholder="Product ID to Edit" value={editId} onChange={(e) => setEditId(e.target.value)} />
       <Button className="w-full mb-4 mt-2" onClick={handleEditFetch}>Edit Product</Button>
-
-      {/* Delete Product */}
+ 
       <Input type="number" placeholder="Product ID to Delete" value={idInput} onChange={(e) => setIdInput(e.target.value)} />
       <Button className="mt-2 w-full" onClick={handleDelete}>Delete</Button>
-
-      {/* Create Product Modal */}
+ 
       <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
         <DialogContent>
           <DialogHeader>
@@ -161,7 +157,7 @@ export function Sidebar({ setCategoryFilter, setLimit, onSelect }: SidebarProps)
         </DialogContent>
       </Dialog>
 
-      {/* Edit Product Modal */}
+  
       <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
         <DialogContent>
           <DialogHeader>
